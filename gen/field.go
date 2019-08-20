@@ -175,8 +175,8 @@ func compileJSONTag(f *compile.FieldSpec, name string, opts ...string) *structta
 	if (isReferenceType(f.Type) || isStructType(f.Type) || isPrimitiveType(f.Type)) &&
 		!f.Required && !t.HasOption("omitempty") && !t.HasOption("keepempty") {
 		t.Options = append(t.Options, "omitempty")
-		newOptions = []string
-		for _, s : range t.Options {
+		newOptions := []string{}
+		for _, s := range t.Options {
 			if s != "keepempty" {
 				newOptions = append(newOptions, s)
 			}
