@@ -173,7 +173,7 @@ func compileJSONTag(f *compile.FieldSpec, name string, opts ...string) *structta
 	// defined as false, 0, a nil pointer, a nil interface value, and any empty
 	// array, slice, map, or string.
 	if (isReferenceType(f.Type) || isStructType(f.Type) || isPrimitiveType(f.Type)) &&
-		!f.Required && !t.HasOption("omitempty") {
+		!f.Required && !t.HasOption("omitempty") && !t.HasOption("keepempty") {
 		t.Options = append(t.Options, "omitempty")
 	}
 
